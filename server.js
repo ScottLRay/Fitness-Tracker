@@ -12,8 +12,9 @@ app.use(express.static("public"));
 
 const User = require("./User.js");
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dbFitness", {
+mongoose.connect("mongodb://localhost/workout", {
   useNewUrlParser: true,
+  useFindAndModify: false
 });
 
 
