@@ -10,14 +10,13 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-const User = require("./User.js");
-
 mongoose.connect("mongodb://localhost/workout", {
   useNewUrlParser: true,
-  useFindAndModify: false
+  useFindAndModify: false,
 });
 
-
+app.use(require("./routes/api.js"));
+app.use(require("./routes/views.js"));
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
