@@ -22,5 +22,8 @@ npm i express mongoose mongo morgan
 
 A consumer will reach their fitness goals more quickly when they track their workout progress.
 
+## Screenshot
+![screen shot of the landing page](assets/img/Screenshot.png)
+
 ### Github repo link
 https://github.com/ScottLRay/Fitness-Tracker
