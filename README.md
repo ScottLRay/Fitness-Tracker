@@ -27,3 +27,6 @@ A consumer will reach their fitness goals more quickly when they track their wor
 
 ### Github repo link
 https://github.com/ScottLRay/Fitness-Tracker
+
+## heruko deployed link
+

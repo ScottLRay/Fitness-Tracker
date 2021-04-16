@@ -15,15 +15,7 @@ router.get("/workouts", (req, res) => {
 });
 
 router.get("/workouts/range", (req, res) => {
-  Workout.aggregate([
-    {
-      $addFields: {
-        totalDuration: {
-          $sum: "$workouts.duration",
-        },
-      },
-    },
-  ])
+  Workout.find({}).limit(7)
     .then((dbworkout) => {
       res.json(dbworkout);
     })
@@ -33,8 +25,12 @@ router.get("/workouts/range", (req, res) => {
 });
 
 //put route
-router.put("/workouts/:id", ({ body }, res) => {
-  Workout.update(body)
+router.put("/workouts/:id", ({ params, body }, res) => {
+  Workout.findByIdAndUpdate(
+    { _id: params.id },
+    { $push: { workout: body } },
+    { upsert: true, useFindandModify: false, new: true }
+  )
     .then((dbworkout) => {
       res.json(dbworkout);
     })
@@ -44,8 +40,8 @@ router.put("/workouts/:id", ({ body }, res) => {
 });
 
 //post route
-router.post("/workouts", ({ body }, res) => {
-  Workout.create(body)
+router.post("/workouts", (req, res) => {
+  Workout.create({})
     .then((dbworkout) => {
       res.json(dbworkout);
     })
